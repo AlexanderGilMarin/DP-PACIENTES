@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- Cambiado a alignment="TOP_CENTER" -->
+
+<VBox alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clase.Pacientes">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+   </padding>
+   <children>
+      
+      <!-- Título -->
+      <Label prefHeight="32.0" prefWidth="190.0" text="Xestión Pacientes" textFill="RED">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+
+      <!-- Fila 1 -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="DNI:" />
+            <TextField fx:id="dnipac" prefWidth="120.0" />
+            <Button fx:id="btnbuscarpaciente" mnemonicParsing="false" prefHeight="22.0" prefWidth="35.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/64673.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label text="Apellidos:" />
+            <TextField fx:id="apelpac" prefWidth="180.0" />
+            <Label text="Nombre:" />
+            <TextField fx:id="nompac" prefWidth="180.0" />
+            <Button fx:id="btnlimpiarpac" onAction="#resetCampos" text="🔄" />
+         </children>
+      </HBox>
+
+      <!-- Fila 2 -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Fecha Nacimiento:" />
+            <DatePicker fx:id="nacpac" prefWidth="150.0" />
+            <Label text="Teléfono:" />
+            <TextField fx:id="tlfpac" prefWidth="120.0" />
+            <Label text="Mail:" />
+            <TextField fx:id="emailpac" prefWidth="180.0" />
+         </children>
+      </HBox>
+
+      <!-- Fila 3 -->
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Label text="Dirección:" />
+            <TextField fx:id="dirpac" prefWidth="200.0" />
+            <Label text="Provincia:" />
+            <ComboBox fx:id="cmbpac" prefWidth="150.0" />
+            <Label text="Localidad:" />
+            <ComboBox fx:id="locpac" prefWidth="150.0" />
+         </children>
+      </HBox>
+
+      <!-- Botones de Acción -->
+      <HBox alignment="CENTER" spacing="15.0">
+         <children>
+            <Button fx:id="btnguardarpac" onAction="#guardarPaciente" text="Guardar" />
+            <Button fx:id="btndelpac" onAction="#eliminarPaciente" text="Eliminar" />
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <TableView fx:id="tablaPacientes" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="1030.0">
+              <columns>
+                <TableColumn fx:id="coldnipac" prefWidth="140.0" text="DNI" />
+                <TableColumn fx:id="colapelpac" prefWidth="200.0" text="APELLIDOS" />
+                  <TableColumn fx:id="colnompac" minWidth="0.0" prefWidth="200.0" text="NOMBRE" />
+                  <TableColumn fx:id="colmovilpac" minWidth="0.0" prefWidth="100.0" text="MOVIL" />
+                  <TableColumn fx:id="colpropac" minWidth="0.0" prefWidth="150.0" text="PROVINCIA" />
+                  <TableColumn fx:id="colmunipac" minWidth="0.0" prefWidth="240.0" text="MUNICIPIO" />
+              </columns>
+               <VBox.margin>
+                  <Insets left="85.0" right="123.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+
+   </children>
+</VBox>
