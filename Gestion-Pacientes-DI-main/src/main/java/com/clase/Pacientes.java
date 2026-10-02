@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 public class Pacientes implements Initializable {
@@ -253,6 +254,7 @@ public class Pacientes implements Initializable {
 
     @FXML
     private void resetCampos() {
+        pacienteexiste = false;
         dnipac.clear();
         apelpac.clear();
         nompac.clear();
@@ -345,6 +347,33 @@ public class Pacientes implements Initializable {
                 return;
             }
 
+            mostrarPaciente(paciente);
+        }
+
+        @FXML
+        private void buscarDni() {
+            String dni = dnipac.getText() == null ? "" : dnipac.getText().trim().toUpperCase();
+            if (dni.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "Introduce un DNI para buscar.").showAndWait();
+                return;
+            }
+
+            dnipac.setText(dni);
+            tablaPacientes.getSelectionModel().clearSelection();
+            Paciente paciente = new PacienteDAOMySQL().buscapacdni(dni);
+            if (paciente == null) {
+                pacienteexiste = false;
+                resetCampos();
+                dnipac.setText(dni);
+                new Alert(Alert.AlertType.INFORMATION, "No se encontró ningún paciente con ese DNI.").showAndWait();
+                return;
+            }
+
+            pacienteexiste = true;
+            mostrarPaciente(paciente);
+        }
+
+        private void mostrarPaciente(Paciente paciente) {
             dnipac.setText(paciente.getDni());
             apelpac.setText(paciente.getApellidos());
             nompac.setText(paciente.getNombre());
@@ -354,7 +383,6 @@ public class Pacientes implements Initializable {
             nacpac.setValue(paciente.getNacimiento());
             cmbpac.setValue(paciente.getProvincia());
             locpac.setValue(paciente.getMunicipio());
-
         }
         public void modificarPaciente(String dni, Paciente paciente) {
 

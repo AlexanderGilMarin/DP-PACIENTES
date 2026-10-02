@@ -161,6 +161,7 @@ public class PacienteDAOMySQL implements PacienteDAO {
 
         return null;
     }
+    @Override
     public Paciente buscapacdni(String dni) {
 
         String sql = "SELECT dnipac, apelpac, nompac, movilpac, "
@@ -191,5 +192,10 @@ public class PacienteDAOMySQL implements PacienteDAO {
                     return paciente;
                 }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el paciente por DNI: " + e.getMessage());
+        }
 
+        return null;
+    }
 }
