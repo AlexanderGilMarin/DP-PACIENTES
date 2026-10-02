@@ -29,7 +29,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-public class Pacientes implements Initializable {
+public class PacientesController implements Initializable {
 
     @FXML
     private TextField dnipac, apelpac, nompac, tlfpac, emailpac, dirpac, tlfopac;

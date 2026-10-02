@@ -1,4 +1,3 @@
-com\clase\Pacientes.class
 com\clase\modelo\Paciente.class
 com\clase\persistencia\PacienteDAOMySQL.class
 module-info.class
